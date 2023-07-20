@@ -4,9 +4,8 @@ Tell the reader (someone who does not know anything about this project)
 all they need to know. The comments should usually include at least:
 ------------------------------------------------------------------------
 
-PROJECT TITLE:
-PURPOSE OF PROJECT:
-VERSION or DATE:
-HOW TO START THIS PROJECT:
-AUTHORS:
+PROJECT TITLE: Jurassic Match
+PURPOSE OF PROJECT: POO Project
+VERSION or DATE: 20/07/2023
+AUTHORS: BlueBarrier
 USER INSTRUCTIONS:
