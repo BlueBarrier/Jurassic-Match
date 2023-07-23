@@ -1,9 +1,11 @@
 #BlueJ class context
 comment0.target=Niveles
 comment0.text=\r\n\ Clase\ que\ crea\ los\ niveles\r\n\ \r\n\ @author\ Erick\ Barrera\ \r\n\ @version\ 20/07/2023\r\n
-comment1.params=
-comment1.target=void\ setear()
+comment1.params=cartitas
+comment1.target=void\ setear(java.lang.String[])
 comment2.params=
-comment2.target=Niveles()
-comment2.text=\r\n\ Constructor\ for\ objects\ of\ class\ Niveles.\r\n\ \r\n
-numComments=3
+comment2.target=void\ act()
+comment3.params=cartitas\ fondo
+comment3.target=Niveles(java.lang.String[],\ java.lang.String)
+comment3.text=\r\n\ Constructor\ de\ Niveles.\r\n\ \r\n
+numComments=4
