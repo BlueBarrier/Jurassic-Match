@@ -56,9 +56,9 @@ public class SelectorNiveles extends Memoria
     
     private void cambiarNivel(){
         // Cambiar al mundo del nivel seleccionado
-        Niveles nivel1 = new Niveles(cartitas1,fondo1);
-        Niveles nivel2 = new Niveles(cartitas2,fondo2);
-        Niveles nivel3 = new Niveles(cartitas3,fondo3);
+        Niveles nivel1 = new Niveles(cartitas1,fondo1,"Triácico");
+        Niveles nivel2 = new Niveles(cartitas2,fondo2,"Jurásico");
+        Niveles nivel3 = new Niveles(cartitas3,fondo3,"Cretácico");
         if (nivelSeleccionado.equals("Triácico")) {
             Greenfoot.setWorld(nivel1);
         }
