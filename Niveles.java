@@ -19,6 +19,7 @@ public class Niveles extends World{
     public Carta carta;
     private GreenfootSound parAcertado;
     private GreenfootSound cartaVolteada;
+    private GreenfootSound musicaFondo;
     /**
      * Constructor de Niveles.
      * 
@@ -37,11 +38,14 @@ public class Niveles extends World{
         cartasSelec = new ArrayList<>();
         parAcertado = new GreenfootSound("sounds/acierto.mp3");
         cartaVolteada = new GreenfootSound("sounds/volteo.mp3");
+        musicaFondo = new GreenfootSound("sounds/High Noon.mp3");
+        musicaFondo.playLoop();
     }
     public void pares(String tiempo,String nivel){
         contadorAciertos = contadorAciertos +1;
         parAcertado.play();
         if(contadorAciertos>=5){
+            musicaFondo.stop();
             PantallaFinalizado pantallaComplete = new PantallaFinalizado(tiempo,nivel);
             Greenfoot.setWorld(pantallaComplete);
             pantallaFinalizadaMostrada = true;
@@ -88,6 +92,7 @@ public class Niveles extends World{
             cartasSelec.add(carta);
             carta.setSelec(!carta.getSelec());
             if (cartasSelec.size() == 2) {
+                Greenfoot.delay(30);
                 comprobar(this.getTiempo(), this.getNivel(),cartasSelec);
             }
         }
@@ -124,8 +129,9 @@ public class Niveles extends World{
             reintentar(cartasSelec);
         }
     }
-    
-    
+    public GreenfootSound getMusicaFondo(){
+        return musicaFondo;
+    }
     public String getTiempo(){
         return Integer.toString(temporizador.getSegundosTranscurridos());
     }

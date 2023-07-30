@@ -43,7 +43,7 @@ public class PantallaFinalizado extends World {
                 opcion = botonNivel.getTexto();
             }
             if (!opcion.equals("")) {
-                cambiarNivel();
+                cambiarNivel(nivel);
             }
         }
     }
@@ -64,13 +64,14 @@ public class PantallaFinalizado extends World {
         }
     }
 
-    private void cambiarNivel() {
-        if (opcion.equals("Menú")) {
-            Greenfoot.setWorld(new Memoria());
-        } else if (opcion.equals("Siguiente Nivel")) {
-            Greenfoot.setWorld(new Niveles(nextCartas, nextFondo, nivel)); // Asegúrate de tener el atributo nivel definido en la clase
-        }
+    private void cambiarNivel(String nivel) {
+    if (opcion.equals("Menú")) {
+        Greenfoot.setWorld(new Memoria());
+    } else if (opcion.equals("Siguiente Nivel")) {
+        Greenfoot.setWorld(new Niveles(nextCartas, nextFondo, nivel));
     }
+    }
+
 
     public PantallaFinalizado(String tiempo, String nivel) {
         super(800, 600, 1);
