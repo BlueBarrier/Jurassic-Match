@@ -7,8 +7,15 @@
 
 import greenfoot.*;
 
-public class SelectorNiveles extends Memoria
+public class SelectorNiveles extends World
 {
+    protected String[] cartitas1 = {"images/Nivel1/dino1.png","images/Nivel1/dino2.png","images/Nivel1/dino3.png","images/Nivel1/dino4.png","images/Nivel1/dino5.png",
+        "images/Nivel1/dino1.png","images/Nivel1/dino2.png","images/Nivel1/dino3.png","images/Nivel1/dino4.png","images/Nivel1/dino5.png"};
+    protected String[] cartitas2;
+    protected String[] cartitas3;
+    protected String fondo1 = "images/Nivel1/Fondo.png";
+    protected String fondo2;
+    protected String fondo3;
     // Variable nivel seleccionado
     private String nivelSeleccionado;
     // Variable estado de pantalla de inicio 
@@ -70,6 +77,7 @@ public class SelectorNiveles extends Memoria
         }
     }
     public SelectorNiveles(){    
+        super(800, 600, 1);
         // Inicializa las variables
         nivelSeleccionado = "";
         enPantallaInicio = true;

@@ -1,73 +1,75 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
-/**
- * Write a description of class PantallaFinalizado here.
- * 
- * @author Erick Barrera 
- * @version 23/07/2023
- */
-public class PantallaFinalizado extends Memoria{
+import greenfoot.*; 
+import java.util.Random;
+public class PantallaFinalizado extends World {
     private String opcion;
-    private boolean pantallaInit;
     private String[] nextCartas;
     private String nextFondo;
     private boolean finalNivel = false;
-    private void prepare(String totaltiempo){
+    protected String[] cartitas1 = {"images/Nivel1/Tri1.png","images/Nivel1/Tri2.png","images/Nivel1/Tri3.png","images/Nivel1/Tri4.png","images/Nivel1/Tri5.png",
+        "images/Nivel1/Tri1.png","images/Nivel1/Tri2.png","images/Nivel1/Tri3.png","images/Nivel1/Tri4.png","images/Nivel1/Tri5.png"};
+    protected String[] cartitas2 = {"images/Nivel2/Jura1.png","images/Nivel2/Jura2.png","images/Nivel2/Jura3.png","images/Nivel2/Jura4.png","images/Nivel2/Jura5.png",
+        "images/Nivel2/Jura1.png","images/Nivel2/Jura2.png","images/Nivel2/Jura3.png","images/Nivel2/Jura4.png","images/Nivel2/Jura5.png"};
+    protected String[] cartitas3 = {"images/Nivel3/Creta1.png","images/Nivel3/Creta2.png","images/Nivel3/Creta3.png","images/Nivel3/Creta4.png","images/Nivel3/Creta5.png",
+        "images/Nivel3/Creta1.png","images/Nivel3/Creta2.png","images/Nivel3/Creta3.png","images/Nivel3/Creta4.png","images/Nivel3/Creta5.png"};
+    protected String[] fondo1 = {"images/Nivel1/Fondo T1.png", "images/Nivel1/Fondo T2.png","images/Nivel1/Fondo T3.png"};
+    protected String[] fondo2 = {"images/Nivel2/Fondo J1.png", "images/Nivel2/Fondo J2.png","images/Nivel2/Fondo J3.png"};
+    protected String[] fondo3 = {"images/Nivel3/Fondo C1.png", "images/Nivel3/Fondo C2.png","images/Nivel3/Fondo C3.png"};
+    private Random rand;
+    private int indiceRandom;
+    private String nivel;
+    private String fondoFinal = "images/Final.jpg"; 
+    private void prepare(String totaltiempo) {
         GreenfootImage texto = new GreenfootImage("¡Fin del nivel!", 30, Color.WHITE, new Color(0, 0, 0, 0));
-        GreenfootImage tiempo = new GreenfootImage(totaltiempo, 30, Color.WHITE, new Color(0, 0, 0, 0));
+        GreenfootImage tiempo = new GreenfootImage("Tu tiempo fue:" + totaltiempo, 30, Color.BLACK, new Color(0, 0, 0, 0));
         BotonesNiveles menu = new BotonesNiveles("Menú");
         BotonesNiveles siguiente = new BotonesNiveles("Siguiente Nivel");
         getBackground().drawImage(texto, getWidth() / 2 - texto.getWidth() / 2, getHeight() / 2 - texto.getHeight() / 2);
         addObject(menu, 400, 200);
-        if (!finalNivel){
+        if (!finalNivel) {
             addObject(siguiente, 400, 300);
         }
-        getBackground().drawImage(tiempo,300,250);
+        getBackground().drawImage(tiempo, 300, 250);
     }
-    public void act(String nivel){
-        if (Greenfoot.mouseClicked(null))
-            {
-                Actor clickedActor = Greenfoot.getMouseInfo().getActor();
-                if (clickedActor instanceof BotonesNiveles){
-                    BotonesNiveles botonNivel = (BotonesNiveles) clickedActor;
-                    if(botonNivel.getTexto() == "Menú"){
-                        opcion = "Menú";
-                    }else if (botonNivel.getTexto() == "Siguiente Nivel"){
-                        opcion = "Siguiente Nivel";
-                    }
-                }
-                // Si se seleccionó un nivel, cambia al mundo del nivel correspondiente
-                if (!opcion.equals("")) {
-                    pantallaInit = false;
-                    cambiarNivel(nivel);
-                }
+
+    public void act() {
+        if (Greenfoot.mouseClicked(null)) {
+            Actor clickedActor = Greenfoot.getMouseInfo().getActor();
+            if (clickedActor instanceof BotonesNiveles) {
+                BotonesNiveles botonNivel = (BotonesNiveles) clickedActor;
+                opcion = botonNivel.getTexto();
             }
+            if (!opcion.equals("")) {
+                cambiarNivel();
+            }
+        }
     }
-    private void comprobarNivel(String nivelC){
-        if(nivelC == "Triácico"){
-            nextCartas = cartitas1;
-            nextFondo = fondo1;
-        }else if(nivelC == "Jurásico"){
+
+    private void comprobarNivel(String nivelC) {
+        Random r1 = new Random();
+        indiceRandom = r1.nextInt(3);
+        if (nivelC.equals("Triácico")) {
+            nivel = "Jurásico";
             nextCartas = cartitas2;
-            nextFondo = fondo2;
-        }else if(nivelC == "Cretácico"){
+            nextFondo = fondo2[indiceRandom];
+        } else if (nivelC.equals("Jurásico")) {
+            nivel = "Cretácico";
             nextCartas = cartitas3;
-            nextFondo = fondo3;
+            nextFondo = fondo3[indiceRandom];
+        } else if (nivelC.equals("Cretácico")) {
             finalNivel = true;
         }
     }
-    private void cambiarNivel(String nivel){
-        // Cambiar al mundo del nivel seleccionado
-        Memoria menu = new Memoria();
-        Niveles nivelsig = new Niveles(nextCartas,nextFondo,nivel);
+
+    private void cambiarNivel() {
         if (opcion.equals("Menú")) {
-            Greenfoot.setWorld(menu);
-        }
-        else if (opcion.equals("Siguiente Nivel")) {
-           Greenfoot.setWorld(nivelsig);
+            Greenfoot.setWorld(new Memoria());
+        } else if (opcion.equals("Siguiente Nivel")) {
+            Greenfoot.setWorld(new Niveles(nextCartas, nextFondo, nivel)); // Asegúrate de tener el atributo nivel definido en la clase
         }
     }
-    public PantallaFinalizado(String tiempo, String nivel){
+
+    public PantallaFinalizado(String tiempo, String nivel) {
+        super(1080, 720, 1);
         comprobarNivel(nivel);
         prepare(tiempo);
     }

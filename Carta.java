@@ -11,70 +11,45 @@ public class Carta extends Actor
 {
     private GreenfootImage caraArriba;
     private GreenfootImage caraAbajo;
-    private boolean volteada;
+    private GreenfootImage imagen;
     private boolean acertada;
-    private int contadorAciertos;
-    private ArrayList<Carta> cartasSelec;
-    public Carta(GreenfootImage caraArriba, GreenfootImage caraAbajo,ArrayList<Carta> cartasSelec){
+    private boolean seleccionada;
+    private String ruta;
+    public Carta(GreenfootImage caraArriba, GreenfootImage caraAbajo,String ruta){
+        this.ruta = ruta;
         this.caraArriba = caraArriba;
         this.caraAbajo = caraAbajo;
-        volteada= false;
         acertada = false;
+        seleccionada = false;
         setImage(caraAbajo);
-        this.cartasSelec = cartasSelec;
+        this.imagen = caraAbajo;
     }
-    public void voltear(String tiempo, String nivel, ArrayList<Carta> cartasSelec) {
-        if (Greenfoot.mouseClicked(this) && !acertada) {
-            if (volteada) {
-                setImage(caraAbajo);
-                cartasSelec.remove(this);
-            } else {
-                setImage(caraArriba);
-                cartasSelec.add(this);
-            }
-            volteada = !volteada;
-            Greenfoot.delay(30);
-            if (cartasSelec.size() == 2) {
-                comprobar(tiempo, nivel,cartasSelec);
-            }
-        }
+    public String getRuta(){
+        return ruta;
     }
-
-    public void comprobar(String tiempo,String nivel,ArrayList<Carta> cartasSelec){
-        Carta cartaS1 = cartasSelec.get(0);
-        Carta cartaS2 = cartasSelec.get(1);
-        GreenfootImage imgCartaS1 = cartaS1.getImage();
-        GreenfootImage imgCartaS2 = cartaS2.getImage();
-        
-        if(imgCartaS1.equals(imgCartaS2)){
-            cartaS1.setAcertada(true);
-            cartaS2.setAcertada(true);
-            pares(tiempo,nivel);
-        } else{
-            cartaS1.voltear(tiempo,nivel,cartasSelec);
-            cartaS2.voltear(tiempo,nivel,cartasSelec);
-        }
-        cartasSelec.clear();
+    public boolean getSelec(){
+        return seleccionada;
     }
-    private void pares(String tiempo,String nivel){
-        contadorAciertos++;
-        if(contadorAciertos>=5){
-            PantallaFinalizado pantallaComplete = new PantallaFinalizado(tiempo,nivel);
-        }
-    }
-    public int getPares(){
-        return contadorAciertos;
-    }
-    public boolean getVolteada(){
-        return volteada;
+    public void setSelec(boolean seleccion){
+        this.seleccionada = seleccion;
     }
     public boolean getAcertada(){
         return acertada;
     }
+
     public void setAcertada(boolean estado){
         this.acertada = estado;
     }
+    public GreenfootImage getCaraAbajo(){
+        return caraAbajo;
+    }
     public GreenfootImage getCaraArriba(){
-        return this.caraArriba;
+        return caraArriba;
+    }
+    public void setImagen(GreenfootImage imagen){
+        this.imagen = imagen;
+    }
+    public GreenfootImage getImagen(){
+        return this.imagen;
     }
 }

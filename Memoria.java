@@ -1,6 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
-
+import java.util.Random;
 /**
  * Write a description of class MyWorld here.
  * 
@@ -9,22 +9,24 @@ import java.util.List;
  */
 public class Memoria extends World{
     private String opcion;
-    protected String[] cartitas1 = {"images/Nivel1/dino1.png","images/Nivel1/dino2.png","images/Nivel1/dino3.png","images/Nivel1/dino4.png","images/Nivel1/dino5.png",
-        "images/Nivel1/dino1.png","images/Nivel1/dino2.png","images/Nivel1/dino3.png","images/Nivel1/dino4.png","images/Nivel1/dino5.png"};
-    protected String[] cartitas2;
-    protected String[] cartitas3;
-    protected String fondo1 = "images/Nivel1/Fondo.png";
-    protected String fondo2;
-    protected String fondo3;
+    protected String[] cartitas1 = {"images/Nivel1/Tri1.png","images/Nivel1/Tri2.png","images/Nivel1/Tri3.png","images/Nivel1/Tri4.png","images/Nivel1/Tri5.png",
+        "images/Nivel1/Tri1.png","images/Nivel1/Tri2.png","images/Nivel1/Tri3.png","images/Nivel1/Tri4.png","images/Nivel1/Tri5.png"};
+    protected String[] cartitas2 = {"images/Nivel2/Jura1.png","images/Nivel2/Jura2.png","images/Nivel2/Jura3.png","images/Nivel2/Jura4.png","images/Nivel2/Jura5.png",
+        "images/Nivel2/Jura1.png","images/Nivel2/Jura2.png","images/Nivel2/Jura3.png","images/Nivel2/Jura4.png","images/Nivel2/Jura5.png"};
+    protected String[] cartitas3 = {"images/Nivel3/Creta1.png","images/Nivel3/Creta2.png","images/Nivel3/Creta3.png","images/Nivel3/Creta4.png","images/Nivel3/Creta5.png",
+        "images/Nivel3/Creta1.png","images/Nivel3/Creta2.png","images/Nivel3/Creta3.png","images/Nivel3/Creta4.png","images/Nivel3/Creta5.png"};
+    protected String[] fondo1 = {"images/Nivel1/Fondo T1.png", "images/Nivel1/Fondo T2.png","images/Nivel1/Fondo T3.png"};
+    protected String[] fondo2 = {"images/Nivel2/Fondo J1.png", "images/Nivel2/Fondo J2.png","images/Nivel2/Fondo J3.png"};
+    protected String[] fondo3 = {"images/Nivel3/Fondo C1.png", "images/Nivel3/Fondo C2.png","images/Nivel3/Fondo C3.png"};
+    private Random rand;
+    private int indiceRandom;
     private boolean pantallaInit;
-    private BotonesNiveles botonHistoria = new BotonesNiveles("Modo Historia");
-    private BotonesNiveles botonSelectNivel = new BotonesNiveles("Selector de Niveles");
-    public void botones(){
-        addObject(botonHistoria, 400, 200);
-        addObject(botonSelectNivel, 400, 300);
-    }
+    public BotonesNiveles botonHistoria = new BotonesNiveles("Modo Historia");
+    public BotonesNiveles botonSelectNivel = new BotonesNiveles("Selector de Niveles");
     public void act()
     {
+        addObject(botonHistoria, 400, 200);
+        addObject(botonSelectNivel, 400, 300);
         // Verifica si se está en la pantalla de inicio
         if (pantallaInit)
         {
@@ -43,6 +45,7 @@ public class Memoria extends World{
                 
                 // Si se seleccionó un nivel, cambia al mundo del nivel correspondiente
                 if (!opcion.equals("")) {
+                    removeObjects(getObjects(BotonesNiveles.class));
                     pantallaInit = false;
                     cambiarNivel();
                 }
@@ -50,10 +53,10 @@ public class Memoria extends World{
         }
     }
     private void cambiarNivel(){
-        botonHistoria.eliminarEsteActor();
-        botonSelectNivel.eliminarEsteActor();
+        Random r1 = new Random();
+        indiceRandom = r1.nextInt(3);
         // Cambiar al mundo del nivel seleccionado
-        Niveles nivel1 = new Niveles(cartitas1, fondo1,"Triácico");
+        Niveles nivel1 = new Niveles(cartitas1, fondo1[indiceRandom],"Triácico");
         SelectorNiveles selector = new SelectorNiveles();
         if (opcion.equals("Modo Historia")) {
             Greenfoot.setWorld(nivel1);
@@ -67,11 +70,10 @@ public class Memoria extends World{
      * 
      */
     public Memoria(){ 
-        super(800, 600, 1);
+        super(1080, 720, 1);
         opcion ="";
         pantallaInit= true;
-        this.botones();
-        setBackground("images/Jurassic Match.jpg");
+        setBackground("images/Jurassic Match.png");
     }
 }
 

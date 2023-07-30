@@ -1,14 +1,13 @@
 #BlueJ class context
 comment0.target=PantallaFinalizado
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ PantallaFinalizado\ here.\r\n\ \r\n\ @author\ Erick\ Barrera\ \r\n\ @version\ 23/07/2023\r\n
 comment1.params=totaltiempo
 comment1.target=void\ prepare(java.lang.String)
-comment2.params=nivel
-comment2.target=void\ act(java.lang.String)
+comment2.params=
+comment2.target=void\ act()
 comment3.params=nivelC
 comment3.target=void\ comprobarNivel(java.lang.String)
-comment4.params=nivel
-comment4.target=void\ cambiarNivel(java.lang.String)
+comment4.params=
+comment4.target=void\ cambiarNivel()
 comment5.params=tiempo\ nivel
 comment5.target=PantallaFinalizado(java.lang.String,\ java.lang.String)
 numComments=6

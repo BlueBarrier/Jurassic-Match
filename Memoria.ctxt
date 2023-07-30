@@ -2,12 +2,10 @@
 comment0.target=Memoria
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ MyWorld\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
-comment1.target=void\ botones()
+comment1.target=void\ act()
 comment2.params=
-comment2.target=void\ act()
+comment2.target=void\ cambiarNivel()
 comment3.params=
-comment3.target=void\ cambiarNivel()
-comment4.params=
-comment4.target=Memoria()
-comment4.text=\r\n\ Constructor\ del\ juego\r\n\ \r\n
-numComments=5
+comment3.target=Memoria()
+comment3.text=\r\n\ Constructor\ del\ juego\r\n\ \r\n
+numComments=4
