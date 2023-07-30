@@ -72,6 +72,7 @@ public class Niveles extends World{
         }
     }
     public void act(){
+        if(Greenfoot.mouseClicked(null)){
         Actor clickedActor = Greenfoot.getMouseInfo().getActor();
         if (clickedActor instanceof Carta){
             Carta carta = (Carta) clickedActor;
@@ -84,7 +85,8 @@ public class Niveles extends World{
                 comprobar(this.getTiempo(), this.getNivel(),cartasSelec);
             }
         }
-    }
+        }
+        }
     }
     public void reintentar(ArrayList<Carta> cartasSelec){
         Carta carta1 = cartasSelec.get(0);
