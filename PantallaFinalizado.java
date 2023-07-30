@@ -19,16 +19,20 @@ public class PantallaFinalizado extends World {
     private String nivel;
     private String fondoFinal = "images/Final.jpg"; 
     private void prepare(String totaltiempo) {
-        GreenfootImage texto = new GreenfootImage("¡Fin del nivel!", 30, Color.WHITE, new Color(0, 0, 0, 0));
-        GreenfootImage tiempo = new GreenfootImage("Tu tiempo fue:" + totaltiempo, 30, Color.BLACK, new Color(0, 0, 0, 0));
-        BotonesNiveles menu = new BotonesNiveles("Menú");
-        BotonesNiveles siguiente = new BotonesNiveles("Siguiente Nivel");
-        getBackground().drawImage(texto, getWidth() / 2 - texto.getWidth() / 2, getHeight() / 2 - texto.getHeight() / 2);
-        addObject(menu, 400, 200);
+        GreenfootImage texto = new GreenfootImage("¡Fin del nivel!", 70, Color.BLACK, new Color(0, 0, 0, 0));
+        GreenfootImage tiempo = new GreenfootImage("Tu tiempo fue: " + totaltiempo + " segundos", 45, Color.BLACK, new Color(0, 0, 0, 0));
+        tiempo.setFont(new Font("Verdana", 18));
+        texto.setFont(new Font("Verdana", 18));
+        BotonesNiveles menu = new BotonesNiveles("Menú", 160);
+        BotonesNiveles siguiente = new BotonesNiveles("Siguiente Nivel", 220);
+        // Botones
+        addObject(menu, 610, 260);
         if (!finalNivel) {
-            addObject(siguiente, 400, 300);
+            addObject(siguiente, 610, 330);
         }
-        getBackground().drawImage(tiempo, 300, 250);
+        // mensajes
+        getBackground().drawImage(texto, 100, 200);
+        getBackground().drawImage(tiempo, 50, 350);
     }
 
     public void act() {
@@ -69,7 +73,8 @@ public class PantallaFinalizado extends World {
     }
 
     public PantallaFinalizado(String tiempo, String nivel) {
-        super(1080, 720, 1);
+        super(800, 600, 1);
+        setBackground("images/Final.jpg");
         comprobarNivel(nivel);
         prepare(tiempo);
     }

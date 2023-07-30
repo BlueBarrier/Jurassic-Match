@@ -24,17 +24,17 @@ public class SelectorNiveles extends World
     private String nivelSeleccionado;
     // Variable estado de pantalla de inicio 
     private boolean enPantallaInicio;
-    BotonesNiveles botonNivel1 = new BotonesNiveles("Triácico");
-    BotonesNiveles botonNivel2 = new BotonesNiveles("Jurásico");
-    BotonesNiveles botonNivel3 = new BotonesNiveles("Cretácico");
+    BotonesNiveles botonNivel1 = new BotonesNiveles("Triácico", 160);
+    BotonesNiveles botonNivel2 = new BotonesNiveles("Jurásico", 160);
+    BotonesNiveles botonNivel3 = new BotonesNiveles("Cretácico", 160);
     
     // Método de inicialización del mundo
     public void prepare(){
         // Agrega los botones para los tres niveles
         
-        addObject(botonNivel1, 400, 200);
-        addObject(botonNivel2, 400, 300);
-        addObject(botonNivel3, 400, 400);
+        addObject(botonNivel1, 600, 220);
+        addObject(botonNivel2, 600, 320);
+        addObject(botonNivel3, 600, 420);
     }
 
     public void act()
@@ -86,6 +86,7 @@ public class SelectorNiveles extends World
         super(800, 600, 1);
         // Inicializa las variables
         nivelSeleccionado = "";
+        setBackground("images/Jurassic Match.png");
         enPantallaInicio = true;
         // Llama al método de inicialización del mundo
         prepare();

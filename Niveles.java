@@ -17,6 +17,8 @@ public class Niveles extends World{
     private boolean pantallaFinalizadaMostrada = false;
     public Actor clickedActor;
     public Carta carta;
+    private GreenfootSound parAcertado;
+    private GreenfootSound cartaVolteada;
     /**
      * Constructor de Niveles.
      * 
@@ -25,17 +27,20 @@ public class Niveles extends World{
     public Niveles(String[] cartitas, String fondo,String nivel)
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels. 
-        super(1080, 720, 1);
+        super(800, 600, 1);
         setear(cartitas);
         GreenfootImage imgFondo = new GreenfootImage(fondo);
         setBackground(imgFondo);
         temporizador = new Timer();
-        addObject(temporizador, getWidth() / 2, 20); // Posición en la parte superior central del mundo
+        addObject(temporizador, getWidth() / 2, 40); // Posición en la parte superior central del mundo
         nivelAct = nivel;
         cartasSelec = new ArrayList<>();
+        parAcertado = new GreenfootSound("sounds/acierto.mp3");
+        cartaVolteada = new GreenfootSound("sounds/volteo.mp3");
     }
     public void pares(String tiempo,String nivel){
         contadorAciertos = contadorAciertos +1;
+        parAcertado.play();
         if(contadorAciertos>=5){
             PantallaFinalizado pantallaComplete = new PantallaFinalizado(tiempo,nivel);
             Greenfoot.setWorld(pantallaComplete);
@@ -63,12 +68,12 @@ public class Niveles extends World{
             cartas[i]=listaCartas.get(i);
         }
         int xInicial = 100;
-        int yInicial = 100;
+        int yInicial = 150;
         for(int i=0;i<5;i++){
-            addObject(cartas[i], xInicial+(i*250),yInicial);
+            addObject(cartas[i], xInicial+(i*150),yInicial);
         }
         for(int i =5;i<10;i++){
-            addObject(cartas[i], xInicial+((i-5)*250),yInicial+250);
+            addObject(cartas[i], xInicial+((i-5)*150),yInicial+150);
         }
     }
     public void act(){
@@ -77,6 +82,7 @@ public class Niveles extends World{
         if (clickedActor instanceof Carta){
             Carta carta = (Carta) clickedActor;
         if (Greenfoot.mouseClicked(carta) && !carta.getAcertada() && !carta.getSelec()) {
+            cartaVolteada.play();
             carta.setImagen(carta.getCaraArriba());
             carta.setImage(carta.getCaraArriba());
             cartasSelec.add(carta);

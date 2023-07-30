@@ -31,7 +31,8 @@ public class Timer extends Actor
     
     private void actualizarImagen()
     {
-        GreenfootImage imagen = new GreenfootImage("Tiempo: " + segundosTranscurridos + "s", 24, Color.BLACK, null);
+        GreenfootImage imagen = new GreenfootImage("Tiempo: " + segundosTranscurridos + "s", 50, Color.BLACK, null);
+        imagen.setFont(new Font("Verdana", 18));
         setImage(imagen);
     }
 }

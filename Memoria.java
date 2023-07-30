@@ -21,12 +21,12 @@ public class Memoria extends World{
     private Random rand;
     private int indiceRandom;
     private boolean pantallaInit;
-    public BotonesNiveles botonHistoria = new BotonesNiveles("Modo Historia");
-    public BotonesNiveles botonSelectNivel = new BotonesNiveles("Selector de Niveles");
+    public BotonesNiveles botonHistoria = new BotonesNiveles("Modo Historia", 160);
+    public BotonesNiveles botonSelectNivel = new BotonesNiveles("Selector de Niveles", 220);
     public void act()
     {
-        addObject(botonHistoria, 400, 200);
-        addObject(botonSelectNivel, 400, 300);
+        addObject(botonHistoria, 610, 260);
+        addObject(botonSelectNivel, 610, 330);
         // Verifica si se está en la pantalla de inicio
         if (pantallaInit)
         {
@@ -70,7 +70,7 @@ public class Memoria extends World{
      * 
      */
     public Memoria(){ 
-        super(1080, 720, 1);
+        super(800, 600, 1);
         opcion ="";
         pantallaInit= true;
         setBackground("images/Jurassic Match.png");
