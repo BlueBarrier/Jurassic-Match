@@ -24,7 +24,7 @@ public class SelectorNiveles extends World
     private String nivelSeleccionado;
     // Variable estado de pantalla de inicio 
     private boolean enPantallaInicio;
-    BotonesNiveles botonNivel1 = new BotonesNiveles("Triácico", 160);
+    BotonesNiveles botonNivel1 = new BotonesNiveles("Triásico", 160);
     BotonesNiveles botonNivel2 = new BotonesNiveles("Jurásico", 160);
     BotonesNiveles botonNivel3 = new BotonesNiveles("Cretácico", 160);
     
@@ -48,7 +48,7 @@ public class SelectorNiveles extends World
                 Actor clickedActor = Greenfoot.getMouseInfo().getActor();
                 if (clickedActor instanceof BotonesNiveles){
                     BotonesNiveles botonNivel = (BotonesNiveles) clickedActor;
-                    if(botonNivel.getTexto() == "Triácico"){
+                    if(botonNivel.getTexto() == "Triásico"){
                         nivelSeleccionado = "Triásico";
                     }else if (botonNivel.getTexto() == "Jurásico"){
                         nivelSeleccionado = "Jurásico";
@@ -69,10 +69,10 @@ public class SelectorNiveles extends World
         // Cambiar al mundo del nivel seleccionado
         Random r1 = new Random();
         indiceRandom = r1.nextInt(3);
-        Niveles nivel1 = new Niveles(cartitas1,fondo1[indiceRandom],"Triácico");
+        Niveles nivel1 = new Niveles(cartitas1,fondo1[indiceRandom],"Triásico");
         Niveles nivel2 = new Niveles(cartitas2,fondo2[indiceRandom],"Jurásico");
         Niveles nivel3 = new Niveles(cartitas3,fondo3[indiceRandom],"Cretácico");
-        if (nivelSeleccionado.equals("Triácico")) {
+        if (nivelSeleccionado.equals("Triásico")) {
             Greenfoot.setWorld(nivel1);
         }
         else if (nivelSeleccionado.equals("Jurásico")) {

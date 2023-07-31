@@ -56,7 +56,7 @@ public class Memoria extends World{
         Random r1 = new Random();
         indiceRandom = r1.nextInt(3);
         // Cambiar al mundo del nivel seleccionado
-        Niveles nivel1 = new Niveles(cartitas1, fondo1[indiceRandom],"Triácico");
+        Niveles nivel1 = new Niveles(cartitas1, fondo1[indiceRandom],"Triásico");
         SelectorNiveles selector = new SelectorNiveles();
         if (opcion.equals("Modo Historia")) {
             Greenfoot.setWorld(nivel1);

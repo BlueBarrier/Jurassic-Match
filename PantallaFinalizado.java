@@ -31,7 +31,7 @@ public class PantallaFinalizado extends World {
             addObject(siguiente, 610, 330);
         }
         // mensajes
-        getBackground().drawImage(texto, 100, 200);
+        getBackground().drawImage(texto, 100, 250);
         getBackground().drawImage(tiempo, 50, 350);
     }
 
@@ -43,7 +43,7 @@ public class PantallaFinalizado extends World {
                 opcion = botonNivel.getTexto();
             }
             if (!opcion.equals("")) {
-                cambiarNivel(nivel);
+                cambiarNivel();
             }
         }
     }
@@ -51,7 +51,7 @@ public class PantallaFinalizado extends World {
     private void comprobarNivel(String nivelC) {
         Random r1 = new Random();
         indiceRandom = r1.nextInt(3);
-        if (nivelC.equals("Triácico")) {
+        if (nivelC.equals("Triásico")) {
             nivel = "Jurásico";
             nextCartas = cartitas2;
             nextFondo = fondo2[indiceRandom];
@@ -64,7 +64,7 @@ public class PantallaFinalizado extends World {
         }
     }
 
-    private void cambiarNivel(String nivel) {
+    private void cambiarNivel() {
     if (opcion.equals("Menú")) {
         Greenfoot.setWorld(new Memoria());
     } else if (opcion.equals("Siguiente Nivel")) {
@@ -75,7 +75,7 @@ public class PantallaFinalizado extends World {
 
     public PantallaFinalizado(String tiempo, String nivel) {
         super(800, 600, 1);
-        setBackground("images/Final.jpg");
+        setBackground("images/Final.png");
         comprobarNivel(nivel);
         prepare(tiempo);
     }
